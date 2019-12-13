@@ -23,6 +23,6 @@ public class GpioConfiguration {
 
   @Bean("pin01")
   GpioPinDigitalOutput pin01() {
-    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.HIGH);
+    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
   }
 }
