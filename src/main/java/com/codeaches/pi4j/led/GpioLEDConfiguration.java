@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
-import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 
@@ -38,7 +37,7 @@ public class GpioLEDConfiguration {
 
     // configure the pin shutdown behavior; these settings will be
     // automatically applied to the pin when the application is terminated
-    pin01.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
+    // pin01.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
 
     return pin01;
   }
