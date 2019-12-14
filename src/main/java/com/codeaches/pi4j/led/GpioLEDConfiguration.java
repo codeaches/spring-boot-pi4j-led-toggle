@@ -1,5 +1,7 @@
 package com.codeaches.pi4j.led;
 
+import javax.annotation.PreDestroy;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -23,5 +25,13 @@ public class GpioLEDConfiguration {
   @Bean("pin01")
   GpioPinDigitalOutput pin01() {
     return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, "MyLED", PinState.LOW);
+  }
+
+  @PreDestroy
+  void preDestroy() {
+
+    if (!gpioController().isShutdown()) {
+      gpioController().shutdown();
+    }
   }
 }
