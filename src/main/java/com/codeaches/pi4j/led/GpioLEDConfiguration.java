@@ -4,6 +4,7 @@ import javax.annotation.PreDestroy;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +17,7 @@ import com.pi4j.io.gpio.RaspiPin;
 
 @Configuration
 public class GpioLEDConfiguration {
+
   Logger log = LoggerFactory.getLogger(GpioLEDConfiguration.class);
 
   @Bean
@@ -25,11 +27,14 @@ public class GpioLEDConfiguration {
     return GpioFactory.getInstance();
   }
 
+  @Autowired
+  GpioController gpioController;
+
   @Bean("pin01")
   GpioPinDigitalOutput pin01() {
 
     // provision gpio pin #01 as an output pin and turn off
-    GpioPinDigitalOutput pin01 = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
+    GpioPinDigitalOutput pin01 = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
 
     // configure the pin shutdown behavior; these settings will be
     // automatically applied to the pin when the application is terminated
@@ -45,8 +50,10 @@ public class GpioLEDConfiguration {
     // (this method will forcefully shutdown all GPIO monitoring threads and
     // scheduled tasks)
 
-    if (!gpioController().isShutdown()) {
-      gpioController().shutdown();
+    if (!gpioController.isShutdown()) {
+
+      gpioController.shutdown();
+      log.info("gpioController shut down");
     }
   }
 }
