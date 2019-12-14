@@ -33,13 +33,7 @@ public class GpioLEDConfiguration {
   GpioPinDigitalOutput pin01() {
 
     // provision gpio pin #01 as an output pin and turn off
-    GpioPinDigitalOutput pin01 = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
-
-    // configure the pin shutdown behavior; these settings will be
-    // automatically applied to the pin when the application is terminated
-    // pin01.setShutdownOptions(true, PinState.LOW, PinPullResistance.OFF);
-
-    return pin01;
+    return gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
   }
 
   @PreDestroy
@@ -50,7 +44,6 @@ public class GpioLEDConfiguration {
     // scheduled tasks)
 
     if (!gpioController.isShutdown()) {
-
       gpioController.shutdown();
       log.info("gpioController shut down");
     }
