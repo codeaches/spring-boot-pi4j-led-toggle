@@ -15,18 +15,30 @@ public class MyRestController {
   Logger log = LoggerFactory.getLogger(MyRestController.class);
 
   @Autowired
-  @Qualifier("pin01")
-  GpioPinDigitalOutput pin01;
+  @Qualifier("pin")
+  GpioPinDigitalOutput pin;
 
   @GetMapping("/toggleLED")
   public void toggleLED() {
 
-    String state = pin01.getState().isHigh() ? "ON" : "OFF";
-    log.info("PIN01 state before toggle: " + state);
+    String state = pin.getState().isHigh() ? "ON" : "OFF";
 
-    pin01.toggle();
+    log.info("pin.getName(): " + pin.getName());
+    log.info("pin.getPin().getAddress():" + pin.getPin().getAddress());
+    log.info("pin.getPin().getName():" + pin.getPin().getName());
+    log.info("pin.getPin().getProvider():" + pin.getPin().getProvider());
 
-    state = pin01.getState().isHigh() ? "ON" : "OFF";
-    log.info("PIN01 state after toggle: " + state);
+    log.info("PIN state before toggle: " + state);
+
+    pin.toggle();
+
+    state = pin.getState().isHigh() ? "ON" : "OFF";
+
+    log.info("pin.getName(): " + pin.getName());
+    log.info("pin.getPin().getAddress():" + pin.getPin().getAddress());
+    log.info("pin.getPin().getName():" + pin.getPin().getName());
+    log.info("pin.getPin().getProvider():" + pin.getPin().getProvider());
+
+    log.info("PIN state after toggle: " + state);
   }
 }
