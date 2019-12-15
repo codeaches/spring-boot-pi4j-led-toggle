@@ -19,9 +19,10 @@ public class GpioLEDConfiguration {
     return GpioFactory.getInstance();
   }
 
+  // GPIO_03 - works for led
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_03, PinState.LOW);
+    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_04, PinState.LOW);
   }
 
   @PreDestroy
