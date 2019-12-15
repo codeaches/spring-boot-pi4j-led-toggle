@@ -5,6 +5,7 @@ import javax.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -19,18 +20,18 @@ public class GpioLEDConfiguration {
 
   Logger log = LoggerFactory.getLogger(GpioLEDConfiguration.class);
 
-  @Bean
+  @Bean("gpioController")
   public GpioController gpioController() {
     return GpioFactory.getInstance();
   }
 
   @Autowired
+  @Qualifier("gpioController")
   public GpioController gpioController;
 
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-
-    return gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_02, PinState.LOW);
+    return gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_03, PinState.LOW);
   }
 
   @PreDestroy
