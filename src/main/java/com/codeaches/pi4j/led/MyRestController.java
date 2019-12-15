@@ -22,23 +22,11 @@ public class MyRestController {
   public void toggleLED() {
 
     String state = pin.getState().isHigh() ? "ON" : "OFF";
-
-    log.info("pin.getName(): " + pin.getName());
-    log.info("pin.getPin().getAddress():" + pin.getPin().getAddress());
-    log.info("pin.getPin().getName():" + pin.getPin().getName());
-    log.info("pin.getPin().getProvider():" + pin.getPin().getProvider());
-
-    log.info("PIN state before toggle: " + state);
+    log.info("PIN_" + pin.getPin().getName() + " state before toggle: " + state);
 
     pin.toggle();
 
     state = pin.getState().isHigh() ? "ON" : "OFF";
-
-    log.info("pin.getName(): " + pin.getName());
-    log.info("pin.getPin().getAddress():" + pin.getPin().getAddress());
-    log.info("pin.getPin().getName():" + pin.getPin().getName());
-    log.info("pin.getPin().getProvider():" + pin.getPin().getProvider());
-
-    log.info("PIN state after toggle: " + state);
+    log.info("PIN_" + pin.getPin().getName() + " state after toggle: " + state);
   }
 }
