@@ -19,10 +19,12 @@ public class GpioLEDConfiguration {
     return GpioFactory.getInstance();
   }
 
+  // GPIO_02 - works for led
   // GPIO_03 - works for led
+  // GPIO_04 - works for led
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_04, PinState.LOW);
+    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_05, PinState.LOW);
   }
 
   @PreDestroy
