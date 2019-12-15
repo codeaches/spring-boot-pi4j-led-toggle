@@ -21,7 +21,7 @@ public class GpioLEDConfiguration {
 
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_02, PinState.LOW);
+    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_03, PinState.LOW);
   }
 
   @PreDestroy
