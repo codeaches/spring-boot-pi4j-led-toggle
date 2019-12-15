@@ -23,6 +23,8 @@ public class GpioLEDConfiguration {
     return GpioFactory.getInstance();
   }
 
+  // GPIO_00 - works for led
+  // GPIO_01 - works for led
   // GPIO_02 - works for led
   // GPIO_03 - works for led
   // GPIO_04 - works for led
@@ -35,8 +37,8 @@ public class GpioLEDConfiguration {
   @Bean("pin")
   GpioPinDigitalOutput pin() {
 
-    GpioPinDigitalOutput pin = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_00, PinState.LOW);
-    log.info("Configured GPIO_00 as output pin with default set to LOW");
+    GpioPinDigitalOutput pin = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
+    log.info("Configured GPIO_01 as output pin with default set to LOW");
     return pin;
   }
 
