@@ -2,6 +2,8 @@ package com.codeaches.pi4j.led;
 
 import javax.annotation.PreDestroy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +16,8 @@ import com.pi4j.io.gpio.RaspiPin;
 @Configuration
 public class GpioLEDConfiguration {
 
+  Logger log = LoggerFactory.getLogger(GpioLEDConfiguration.class);
+
   @Bean
   public GpioController gpioController() {
     return GpioFactory.getInstance();
@@ -25,7 +29,10 @@ public class GpioLEDConfiguration {
   // GPIO_05 - works for led
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_06, PinState.LOW);
+
+    GpioPinDigitalOutput pin = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_06, PinState.LOW);
+    log.info("Configured GPIO_06 as output pin with default set to LOW");
+    return pin;
   }
 
   @PreDestroy
