@@ -18,28 +18,15 @@ public class GpioLEDConfiguration {
 
   Logger log = LoggerFactory.getLogger(GpioLEDConfiguration.class);
 
-  @Bean
+  @Bean("gpioController")
   public GpioController gpioController() {
     return GpioFactory.getInstance();
   }
 
-  // GPIO_00 - works for led
-  // GPIO_01 - works for led
-  // GPIO_02 - works for led
-  // GPIO_03 - works for led
-  // GPIO_04 - works for led
-  // GPIO_05 - works for led
-  // GPIO_06 - works for led
-  // GPIO_07 - works for led
-  // GPIO_08 - works for led
-  // GPIO_09 - works for led
-  // GPIO_10 - works for led
   @Bean("pin")
   GpioPinDigitalOutput pin() {
 
-    GpioPinDigitalOutput pin = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
-    log.info("Configured GPIO_01 as output pin with default set to LOW");
-    return pin;
+    return gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_01, PinState.LOW);
   }
 
   @PreDestroy
