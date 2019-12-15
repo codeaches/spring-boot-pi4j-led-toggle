@@ -32,7 +32,7 @@ public class GpioLEDConfiguration {
   GpioPinDigitalOutput pin() {
 
     GpioPinDigitalOutput pin = gpioController().provisionDigitalOutputPin(RaspiPin.GPIO_07, PinState.LOW);
-    log.info("Configured GPIO_06 as output pin with default set to LOW");
+    log.info("Configured GPIO_07 as output pin with default set to LOW");
     return pin;
   }
 
