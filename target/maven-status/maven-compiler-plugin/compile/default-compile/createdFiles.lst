@@ -1,3 +1,4 @@
 com\codeaches\pi4j\led\GpioLEDConfiguration.class
+com\codeaches\pi4j\led\PiPin.class
 com\codeaches\pi4j\led\MyRestController.class
 com\codeaches\pi4j\led\SpringBootPi4jLedToggleApplication.class

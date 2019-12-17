@@ -13,7 +13,6 @@ import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalOutput;
 import com.pi4j.io.gpio.PinState;
-import com.pi4j.io.gpio.RaspiPin;
 
 @Configuration
 public class GpioLEDConfiguration {
@@ -31,7 +30,7 @@ public class GpioLEDConfiguration {
 
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-    return gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_03, PinState.LOW);
+    return gpioController.provisionDigitalOutputPin(PiPin.GPIO_02, PinState.LOW);
   }
 
   @PreDestroy
