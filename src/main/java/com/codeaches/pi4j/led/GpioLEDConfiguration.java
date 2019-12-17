@@ -29,10 +29,7 @@ public class GpioLEDConfiguration {
 
   @Bean("pin")
   GpioPinDigitalOutput pin() {
-
-    GpioPinDigitalOutput pinmy = gpioController.provisionDigitalOutputPin(PiPin.GPIO_02);
-    System.out.println("pin.getPullResistance().toString(): " + pinmy.getPullResistance().toString());
-    return pinmy;
+    return gpioController.provisionDigitalOutputPin(PiPin.GPIO_02);
   }
 
   @PreDestroy
